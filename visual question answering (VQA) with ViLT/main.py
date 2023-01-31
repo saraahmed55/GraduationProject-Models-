@@ -4,6 +4,7 @@ from transformers import ViltProcessor
 from transformers import ViltForQuestionAnswering 
 import torch
 
+#image with Ques
 url = "http://images.cocodataset.org/test-stuff2017/000000002558.jpg"
 image = Image.open(requests.get(url, stream=True).raw)
 text = "What color of traffic signal?"
@@ -20,4 +21,9 @@ outputs = model(**encoding)
 logits = outputs.logits
 idx = torch.sigmoid(logits).argmax(-1).item()
 print("Predicted answer:", model.config.id2label[idx])
+     
+  
+  
+# Requirements 
+# download a "!pip install -q git+https://github.com/huggingface/transformers.git"
      
